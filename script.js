@@ -1,9 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
     const hackingText = document.getElementById('hacking-text');
     const body = document.body;
-    const jumpscare = document.getElementById('jumpscare');
-    const screamSound = document.getElementById('scream-sound');
+    const jumpscare1 = document.getElementById('jumpscare1');
+    const jumpscare2 = document.getElementById('jumpscare2');
+    const screamSound1 = document.getElementById('scream-sound1');
+    const screamSound2 = document.getElementById('scream-sound2');
     const whisperSound = document.getElementById('whisper-sound');
+    const glitchSound = document.getElementById('glitch-sound');
     const joinTeamContainer = document.getElementById('join-team-container');
     const joinTeamButton = document.getElementById('join-team-button');
 
@@ -38,23 +41,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Automatically start the hack simulation after fullscreen is enabled
     setTimeout(() => {
-        simulateTyping('CompromisingSystemSecurity...', hackingText, 25);
+        simulateTyping('لقد تم اختراقك شكرا لثقتك ودخولك الرابط... ████ █████████ ████ ██ ███ █ ████ █████', hackingText, 25);
         flashScreen();
 
-        // Whisper sound effect before the jump scare
+        // Random glitch sound effect
+        setTimeout(() => {
+            glitchSound.play();
+        }, 2500);
+
+        // Whisper sound effect before the first jump scare
         setTimeout(() => {
             whisperSound.play();
         }, 3000);
 
-        // After a short delay, display the jump scare
+        // First jump scare
         setTimeout(() => {
-            displayJumpScare();
-            screamSound.play();
+            displayJumpScare(jumpscare1, screamSound1);
         }, 5000);
 
-        // Show the "Join Our Team" button after the jump scare
+        // Show the "Join Our Team" button after the first jump scare
         setTimeout(() => {
-            jumpscare.classList.add('hidden');
+            jumpscare1.classList.add('hidden');
             joinTeamContainer.classList.remove('hidden');
         }, 7000);
     }, 2000); // Start the sequence 2 seconds after fullscreen mode
@@ -63,16 +70,21 @@ document.addEventListener('DOMContentLoaded', function () {
     joinTeamButton.addEventListener('click', function () {
         joinTeamContainer.classList.add('hidden');
         hackingText.innerHTML = ''; // Clear previous text
-        simulateTyping('You thought you were safe...', hackingText, 50);
+        simulateTyping('تم اخذ معلوماتك بواسطة الزر شكرا لثقتك بي', hackingText, 50);
+
+        // Random screen flicker and blackout
+        setTimeout(() => {
+            blackoutScreen();
+        }, 1500);
 
         setTimeout(() => {
             flashScreen();
-            simulateTyping('HackingYouAgain...', hackingText, 50);
+            simulateTyping('مع السلامه...', hackingText, 50);
         }, 2000);
 
+        // Second jump scare
         setTimeout(() => {
-            displayJumpScare();
-            screamSound.play();
+            displayJumpScare(jumpscare2, screamSound2);
         }, 5000);
 
         // Optional: Stop the music or keep it playing based on your preference
@@ -101,6 +113,15 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 100);
     }
 
+    function blackoutScreen() {
+        body.style.backgroundColor = 'black';
+        hackingText.style.color = 'black';
+        setTimeout(() => {
+            body.style.backgroundColor = 'black';
+            hackingText.style.color = '#00ff00';
+        }, 500);
+    }
+
     function simulateTyping(text, element, speed) {
         let i = 0;
         function typeWriter() {
@@ -114,10 +135,11 @@ document.addEventListener('DOMContentLoaded', function () {
         typeWriter();
     }
 
-    function displayJumpScare() {
-        jumpscare.classList.remove('hidden');
+    function displayJumpScare(jumpscareElement, screamSound) {
+        jumpscareElement.classList.remove('hidden');
+        screamSound.play();
         setTimeout(() => {
-            jumpscare.classList.add('hidden');
+            jumpscareElement.classList.add('hidden');
         }, 1000); // Show the jump scare for 1 second
     }
 });
