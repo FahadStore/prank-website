@@ -1,0 +1,187 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto Mono', monospace;
+    background-color: #121212;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.hero-section {
+    position: relative;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    filter: brightness(50%);
+    opacity: 0;
+    animation: fadeIn 3s ease-in-out forwards;
+}
+
+.cta-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px 30px;
+    font-size: 20px;
+    font-family: 'Roboto Mono', monospace;
+    border: 2px solid #ff0000;
+    background-color: #000;
+    color: #ff0000;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    animation: buttonFadeIn 4s ease-in-out forwards;
+}
+
+.cta-button:hover {
+    background-color: #ff0000;
+    color: #000;
+    transform: scale(1.2);
+    box-shadow: 0 0 15px 5px rgba(255, 0, 0, 0.8);
+}
+
+.hacked-message {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 50px;
+    border: 3px solid red;
+    text-align: center;
+    animation: hackedFadeIn 2s ease-in-out forwards;
+}
+
+.hacked-message h1 {
+    color: red;
+    font-size: 48px;
+    font-family: 'Roboto Mono', monospace;
+    animation: flicker 1.5s infinite alternate;
+}
+
+.glitch {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('glitch.gif') no-repeat center center;
+    background-size: cover;
+    opacity: 0;
+    animation: glitchFadeIn 3s ease-in-out forwards, glitchEffect 0.2s infinite;
+}
+
+.special-symbols {
+    margin-top: 20px;
+    font-size: 32px;
+    color: #ff0000;
+    opacity: 0;
+    animation: symbolFadeIn 5s ease-in-out forwards, symbolBlink 0.5s infinite alternate;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes buttonFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes hackedFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translate(-50%, -50%);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translate(-50%, -50%);
+    }
+}
+
+@keyframes flicker {
+    0% {
+        opacity: 1;
+        text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000, 0 0 20px #ff0000;
+    }
+    50% {
+        opacity: 0.5;
+        text-shadow: none;
+    }
+    100% {
+        opacity: 1;
+        text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000, 0 0 20px #ff0000;
+    }
+}
+
+@keyframes glitchFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.2;
+    }
+}
+
+@keyframes glitchEffect {
+    0% {
+        transform: translate(0, 0);
+    }
+    20% {
+        transform: translate(5px, 5px);
+    }
+    40% {
+        transform: translate(-5px, -5px);
+    }
+    60% {
+        transform: translate(5px, -5px);
+    }
+    80% {
+        transform: translate(-5px, 5px);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes symbolFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes symbolBlink {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.5;
+    }
+}
