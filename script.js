@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Automatically start the hack simulation after fullscreen is enabled
     setTimeout(() => {
-        simulateTyping('لقد تم اختراقك شكرا لثقتك ودخولك الرابط... ████ █████████ ████ ██ ███ █ ████ █████', hackingText, 25);
+        simulateTyping('الدخول للبيانات', hackingText, 25);
         flashScreen();
 
         // Random glitch sound effect
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
     joinTeamButton.addEventListener('click', function () {
         joinTeamContainer.classList.add('hidden');
         hackingText.innerHTML = ''; // Clear previous text
-        simulateTyping('تم اخذ معلوماتك بواسطة الزر شكرا لثقتك بي', hackingText, 50);
+        simulateTyping('Welcome Back...', hackingText, 50);
 
         // Random screen flicker and blackout
         setTimeout(() => {
